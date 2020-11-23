@@ -7,5 +7,7 @@ export class Medicine {
   price: string;
   notes: string;
   isExpiryThresholdReached: boolean;
-  isCallbackRequest: boolean
+  isCallbackRequest: boolean;
+  isError: boolean;
+  validationMessages: string;
 }

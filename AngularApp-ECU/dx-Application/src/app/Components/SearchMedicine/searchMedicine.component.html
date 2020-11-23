@@ -7,7 +7,7 @@
     <button class="btn btn-primary" type="button" (click)="getMedicines()">Search</button>
   </div>
 </div>
-
+<notifier-container></notifier-container>
 <a class="btn btn-link" routerLink="/add-medicine" routerLinkActive="active" role="button">ADD</a>
 <dx-data-grid id="#searchGrid" [dataSource]="dataSource" [showBorders]="true"
               [columnAutoWidth]="true" noDataText="No Data Found"

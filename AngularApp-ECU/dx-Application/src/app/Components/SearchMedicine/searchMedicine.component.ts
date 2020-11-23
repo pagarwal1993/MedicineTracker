@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../Services/Data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Medicine } from '../../Models/Medicine.Model';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'search-medicine',
   templateUrl: 'searchMedicine.component.html',
   styleUrls: ['searchMedicine.component.css'],
-  providers: [DataService]
+  providers: [DataService, NotifierService]
 })
 
 export class SearchMedicineComponent implements OnInit {
@@ -16,9 +17,11 @@ export class SearchMedicineComponent implements OnInit {
   service: DataService;
   medicneName: string;
   medicineData: Medicine[];
+  private notifier: NotifierService;
 
-  constructor(service: DataService, private route: ActivatedRoute) {
+  constructor(service: DataService, private route: ActivatedRoute, notifier: NotifierService) {
     this.service = service;
+    this.notifier = notifier;
   }
 
   ngOnInit() {
@@ -51,22 +54,23 @@ export class SearchMedicineComponent implements OnInit {
   }
 
   displayAddedMedicine() {
-
-    var record = new Medicine();
-    record.name = this.route.snapshot.paramMap.get("name");
-    record.brand = this.route.snapshot.paramMap.get("brand");
-    record.notes = this.route.snapshot.paramMap.get("notes");
-    record.expiryDate = this.route.snapshot.paramMap.get("expiryDate") as unknown as Date;
-    record.price = this.route.snapshot.paramMap.get("price");
-    record.quantity = this.route.snapshot.paramMap.get("quantity") as unknown as number;
-
-    if (this.medicineData.filter(t => t.name === record.name).length > 0) {
-      this.medicineData.filter(t => t.name === record.name)[0].notes = record.notes;
+      var validationMessages = JSON.parse(this.route.snapshot.paramMap.get("validationMessages"));
+      var errors = validationMessages.filter(x => x.type == "Error")
+      if (errors.length > 0) {
+        this.showNotification("error", errors[0].message);
+        return;
     }
-    else
-      this.medicineData.push(record);
+    var warninngs = validationMessages.filter(x => x.type == "Warning");
+      if (warninngs.length > 0) {
+        console.log(warninngs);
+        this.showNotification("warning", warninngs[0].message);
+      }
 
-    this.medicneName = record.name;
+    this.medicneName = this.route.snapshot.paramMap.get("name");
     this.getMedicines();
+  }
+
+  public showNotification(type: string, message: string): void {
+    this.notifier.notify(type, message);
   }
 }

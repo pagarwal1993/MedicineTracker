@@ -20,16 +20,18 @@ namespace MedicineTracker.Controllers
         public JsonResult AddMedicine([FromBody] Medicine data)
         {
             ValidateMedicineData(data);
-
-            repo.Add(new MedicineDto
+            if (!data.ValidationMessages.Any(x => x.Type == "Error"))
             {
-                Brand = data.Brand,
-                ExpiryDate = data.ExpiryDate,
-                Name = data.Name,
-                Notes = data.Notes,
-                Price = data.Price,
-                Quantity = data.Quantity
-            });
+                repo.Add(new MedicineDto
+                {
+                    Brand = data.Brand,
+                    ExpiryDate = data.ExpiryDate,
+                    Name = data.Name,
+                    Notes = data.Notes,
+                    Price = data.Price,
+                    Quantity = data.Quantity
+                });
+            }
 
             return new JsonResult(data);
         }
@@ -69,10 +71,10 @@ namespace MedicineTracker.Controllers
         private void ValidateMedicineData(Medicine item)
         {
             if (DateTime.Now.AddDays(15) > item.ExpiryDate)
-                throw new Exception("Expiry Date is less than 15 days");
+                item.ValidationMessages.Add(new ValidationMessages("Expiry Date is less than 15 days", "Error"));
 
             if (DateTime.Now.AddDays(30) > item.ExpiryDate)
-                item.WarningMessage = "Expiry Date is less than 30 days";
+                item.ValidationMessages.Add(new ValidationMessages("Expiry Date is less than 30 days", "Warning"));
         }
     }
 }

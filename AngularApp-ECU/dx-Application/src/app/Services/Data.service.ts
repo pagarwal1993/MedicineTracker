@@ -18,7 +18,7 @@ export class DataService {
     return this.http.get<Medicine[]>(this.baseUrl);
   }
 
-  addMedicines(data: Medicine): any {
+  addMedicines(data: Medicine): any  {
     this.baseUrl = this.baseUrl + '/api/Medicine/AddMedicine';
     return this.http.post<Medicine>(this.baseUrl, data, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }

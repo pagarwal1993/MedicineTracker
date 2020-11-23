@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MedicineTracker.Model
 {
     public class Medicine
     {
+        public Medicine()
+        {
+            ValidationMessages = new List<ValidationMessages>();
+        }
         public string Name { get; set; }
 
         public string Brand { get; set; }
@@ -22,5 +27,7 @@ namespace MedicineTracker.Model
         }
 
         public string WarningMessage { get; set; }
+
+        public List<ValidationMessages> ValidationMessages { get; set; }
     }
 }

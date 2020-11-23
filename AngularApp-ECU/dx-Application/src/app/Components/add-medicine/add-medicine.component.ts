@@ -29,13 +29,10 @@ export class AddMedicineComponent {
     medicine.quantity = this.quantity;
     medicine.notes = this.notes;
     medicine.expiryDate = this.expiryDate;
-    medicine.isCallbackRequest = true;
     this.service.addMedicines(medicine).subscribe(
       response => {
-       this.router.navigate(['/search-medicine', medicine]);
-      } ,
-      (error: Response) => {
-        alert(error.text());
+        var validationMessages = JSON.stringify(response.validationMessages);
+        this.router.navigate(['/search-medicine', { "name": this.medicineName, "validationMessages": validationMessages, "isCallbackRequest": true }]);
       });
   }
 }
