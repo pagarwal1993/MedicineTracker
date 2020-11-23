@@ -10,20 +10,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Node.js must be installed on target system
+* After clonning the repository, navigate to `\MedicineTracker\AngularApp-ECU\dx-Application`  using terminal window `cd \MedicineTracker\AngularApp-ECU\dx-Application`
+* run `ng add @angular/localize` on terminal
+* run `npm install` on terminal
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
