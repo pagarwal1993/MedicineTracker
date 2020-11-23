@@ -12,6 +12,7 @@ import { SearchMedicineComponent } from './Components/SearchMedicine/searchMedic
 import { MedicineDetailsComponent } from './Components/medicine-details/medicine-details.component';
 import { AddMedicineComponent } from './Components/add-medicine/add-medicine.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
   ],
-  declarations: [AppComponent, SearchMedicineComponent, SharedPageHeaderComponent, MedicineDetailsComponent, AddMedicineComponent],
+  declarations: [AppComponent, SearchMedicineComponent, SharedPageHeaderComponent, MedicineDetailsComponent, AddMedicineComponent, NotFoundComponent],
   bootstrap: [AppComponent],
   providers: [{ provide: APP_BASE_HREF, useValue: '/' }]
 })
