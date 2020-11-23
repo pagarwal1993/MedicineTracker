@@ -1,0 +1,48 @@
+<page-header [pageHeader]="pageHeader"></page-header>
+
+<form (ngSubmit)="processForm()">
+  <div class="form-row">
+    <div class="col">
+      <label for="name">Name</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="name" aria-describedby="basic-addon3"  [(ngModel)]="medicineName" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="col">
+      <label for="brand">Brand</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="brand" aria-describedby="basic-addon3"  [(ngModel)]="brand" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="price">Price</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" id="price" aria-describedby="basic-addon3" [(ngModel)]="price" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="col">
+      <label for="quantity">Quantity</label>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" id="quantity" aria-describedby="basic-addon3" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="expiryDate">Expiry Date</label>
+      <div class="input-group mb-3">
+        <input type="date" class="form-control" id="expiryDate" aria-describedby="basic-addon3" [(ngModel)]="expiryDate" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="col">
+      <label for="notes">Notes</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="notes" aria-describedby="basic-addon3" [(ngModel)]="notes" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

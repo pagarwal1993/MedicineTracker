@@ -1,0 +1,61 @@
+<page-header [pageHeader]="pageHeader"></page-header>
+
+
+<a class="btn btn-link" (click)="onEdit(template)"  role="button">EDIT</a>
+
+<form class="container">
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="name">Name:</label>
+      <label lass="form-control" id="name">{{this.medicine.name}}</label>
+    </div>
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="brand">Brand:</label>
+      <label lass="form-control" id="brand">{{this.medicine.brand}}</label>
+    </div>
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="price">Price:</label>
+      <label lass="form-control" id="price">{{this.medicine.price}}</label>
+    </div>
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="quantity">Quantity:</label>
+      <label lass="form-control" id="name">{{this.medicine.quantity}}</label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="expiryDate">Expiry Date:</label>
+      <label lass="form-control" id="brand">{{this.medicine.expiryDate | date:'shortDate'}}</label>
+    </div>
+    <div class="form-group col-sm-6">
+      <label style="font-weight: bolder; font-size:large" for="notes">Notes:</label>
+      <label lass="form-control" id="price">{{this.medicine.notes}}</label>
+    </div>
+  </div>
+</form>
+
+<ng-template #template>
+  <div class="modal-header">
+    <page-header [pageHeader]="'Update Notes'"></page-header>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="col">
+        <label for="notes">Notes</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="notes" aria-describedby="basic-addon3" [(ngModel)]="medicine.notes" [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="updateNotes()">Update</button>
+    <button type="button" class="btn btn-default" (click)="cancelUpdate()">Cancel</button>
+  </div>
+</ng-template>
