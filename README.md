@@ -11,7 +11,7 @@ This README would normally document whatever steps are necessary to get your app
 ### How do I get set up? ###
 
 * Node.js must be installed on target system
-* After clonning the repository, navigate to \MedicineTracker\AngularApp-ECU\dx-Application  using terminal window cd \MedicineTracker\AngularApp-ECU\dx-Application
-* run ng add @angular/localize on terminal
-* run npm install on terminal
+* After clonning the repository, navigate to `\MedicineTracker\AngularApp-ECU\dx-Application`  using terminal window `cd \MedicineTracker\AngularApp-ECU\dx-Application`
+* run `ng add @angular/localize` on terminal
+* run `npm install` on terminal
 
