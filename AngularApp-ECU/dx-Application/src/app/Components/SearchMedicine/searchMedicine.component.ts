@@ -34,7 +34,7 @@ export class SearchMedicineComponent implements OnInit {
   }
 
   getMedicines() {
-    this.dataSource = this.medicineData.filter(t => t.name === this.medicneName);
+    this.dataSource = this.medicineData.filter(t => t.name.toLowerCase() === this.medicneName.toLowerCase());
   }
 
   onContentReady(e) {
